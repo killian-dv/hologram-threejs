@@ -19,9 +19,13 @@ void main() {
   float fresnel = dot(viewDirection, normal) + 1.0;
   fresnel = pow(fresnel, 2.0);
 
+  // falloff
+  float falloff = smoothstep(0.8, 0.0, fresnel);
+
   // holographic
   float holographic = fresnel * stripes;
   holographic += fresnel * 1.25;
+  holographic *= falloff;
 
   gl_FragColor = vec4(vec3(1.0), holographic);
   #include <tonemapping_fragment>
