@@ -89,6 +89,9 @@ const material = new THREE.ShaderMaterial({
   vertexShader: holographicVertexShader,
   fragmentShader: holographicFragmentShader,
   transparent: true,
+  side: THREE.DoubleSide,
+  depthWrite: false,
+  blending: THREE.AdditiveBlending,
   uniforms: {
     uTime: new THREE.Uniform(0),
   },
